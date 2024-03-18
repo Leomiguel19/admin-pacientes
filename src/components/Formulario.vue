@@ -17,11 +17,13 @@
 
     const validar = () => {
         if(Object.values(paciente).includes('')){
-            console.log('Si estan vacios')
-            alerta.tipo = 'Todos los campos son obligatorios';
-            alerta.mensaje = 'error';
+            alerta.mensaje = 'Todos los campos son obligatorios';
+            alerta.tipo = 'error';
             return;
         }
+
+        alerta.mensaje = 'Paciente Almacenado Correctamente'
+        alerta.tipo = 'exito'
         console.log("Agregando");
     }
 
@@ -36,6 +38,10 @@
             <span class="text-indigo-600 font-bold">Administralos</span>
         </p>
 
+        <Alerta 
+            v-if="alerta.mensaje" 
+            :alerta="alerta"
+        />
         <form
             class="bg-white shadow-md rounded-lg py-10 px-5 mb-10"
             @submit.prevent="validar"
