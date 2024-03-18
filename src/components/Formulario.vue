@@ -1,4 +1,13 @@
-<script>
+<script setup>
+    import { reactive } from 'vue';
+    
+    const paciente = reactive({
+        nombre: '',
+        propietario: '',
+        email: '',
+        alta: '',
+        sintomas: '',
+    });
 
 </script>
 
@@ -25,7 +34,8 @@
                     id="mascota"                    
                     type="text"
                     placeholder="Nombre de la mascota" 
-                    class="border-2 border-stone-300	w-full p-2 mt-2 placeholder-gray-400 rounded-md"
+                    class="border-2 border-stone-300 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
+                    v-model="paciente.nombre"
                 >
             </div>
 
@@ -41,6 +51,7 @@
                     type="text"
                     placeholder="Nombre de la propietario" 
                     class="border-2 border-stone-300 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
+                    v-model="paciente.propietario"
                 >
             </div>
 
@@ -56,6 +67,7 @@
                     type="email"
                     placeholder="Ingrese el email"  
                     class="border-2 border-stone-300 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
+                    v-model="paciente.email"
                 >
             </div>
 
@@ -70,6 +82,7 @@
                     id="Alta"                    
                     type="date"
                     class="border-2 border-stone-300 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
+                    v-model="paciente.alta"
                 >
             </div>
 
@@ -84,6 +97,7 @@
                     id="sintomas"                                        
                     placeholder="Describe los sintomas" 
                     class="border-2 border-stone-300 w-full p-2 mt-2 placeholder-gray-400 rounded-md h-40"
+                    v-model="paciente.sintomas"
                 />
             </div>
 
