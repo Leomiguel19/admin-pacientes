@@ -1,10 +1,9 @@
 <script setup>
-  import {ref, reactive} from 'vue';
+  import {ref, reactive, onMounted, watch} from 'vue';
   import { uid } from 'uid';
   import Header from './components/Header.vue'
   import Formulario from './components/Formulario.vue'
   import Paciente from './components/Paciente.vue'
-
   const pacientes = ref([]);
 
   const paciente = reactive({
@@ -15,6 +14,24 @@
     alta: '',
     sintomas: '',
   }); 
+
+  onMounted(() => {
+    const pacientesStorage = localStorage.getItem("pacientes");
+    if (pacientesStorage){
+      console.log("existe el pacienteStorage")
+      pacientes.value = JSON.parse(pacientesStorage);
+    }
+  }),
+
+  watch(pacientes, () => {
+    guardarLocalStorage();
+  },{
+    deep: true,
+  })
+
+  const guardarLocalStorage = () => {
+    localStorage.setItem("pacientes", JSON.stringify(pacientes.value));
+  }
 
   const guardarPaciente = () => {
     if(paciente.id){
