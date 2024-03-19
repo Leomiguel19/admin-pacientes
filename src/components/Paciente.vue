@@ -1,6 +1,6 @@
 <script setup>
 
-    const emit = defineEmits(['editarPaciente'])
+    const emit = defineEmits(['editarPaciente', 'eliminarPaciente'])
 
     defineProps({
         paciente: {
@@ -57,6 +57,7 @@
             <button 
                 type="button"
                 class="block w-full py-2 px-10 bg-red-600 hover:bg-red-700 text-white font-bold uppercase rounded-lg"
+                @click="$emit('eliminarPaciente', paciente.id)"
             >Eliminar</button>
         </div>
     </div>
