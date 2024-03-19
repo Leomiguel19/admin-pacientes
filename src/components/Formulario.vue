@@ -7,7 +7,7 @@
         mensaje: '',
     });
 
-    defineEmits(['update:nombre', 'update:propietario', 'update:email', 'update:alta', 'update:sintomas'])
+    const emit = defineEmits(['update:nombre', 'update:propietario', 'update:email', 'update:alta', 'update:sintomas', 'guardarPaciente'])
 
     const props = defineProps({
         nombre: {
@@ -38,10 +38,9 @@
             alerta.tipo = 'error';
             return;
         }
-
+        emit('guardarPaciente')
         alerta.mensaje = 'Paciente Almacenado Correctamente'
         alerta.tipo = 'exito'
-        console.log("Agregando");
     }
 
 </script>
